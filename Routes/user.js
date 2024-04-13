@@ -31,10 +31,22 @@ router.put("/:id", async (req, res) => {
         return res.json({ status: 404, message: "no data fount" })
     }
 
+    // let updateData = await User.findByIdAndUpdate(req.params.id, {
+    //     enclosure_id: req.body.enclosure_id,
+    //     meaurement_name: req.body.meaurement_name,
+    //     values: req.body.values,
+    // })
     let updateData = await User.findByIdAndUpdate(req.params.id, {
         enclosure_id: req.body.enclosure_id,
-        meaurement_name: req.body.meaurement_name,
-        values: req.body.values,
+        values: [{
+            key: req.body.key,
+            value: req.body.value,
+            event_date: req.body.event_date,
+        }, {
+            key: req.body.key,
+            value: req.body.value,
+            event_date: req.body.event_date,
+        }]
     })
 
     if (!updateData) {
