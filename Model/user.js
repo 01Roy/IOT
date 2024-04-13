@@ -10,12 +10,18 @@ const valuesSchema = mongoose.Schema({
     key: String,
     value: Number,
     uom: String,
-    event_date: Date
+    event_date: {
+        type: Date,
+        default: Date.now
+    }
 }, {
     key: String,
     value: Number,
     uom: String,
-    event_date: Date
+    event_date: {
+        type: Date,
+        default: Date.now
+    }
 })
 const userSchema = mongoose.Schema({
     enclosure_id: Number,
